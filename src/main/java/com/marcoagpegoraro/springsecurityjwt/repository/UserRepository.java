@@ -1,0 +1,14 @@
+package com.marcoagpegoraro.springsecurityjwt.repository;
+
+import com.marcoagpegoraro.springsecurityjwt.model.UserDetailsImpl;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
+
+@Repository
+public interface UserRepository extends CrudRepository<UserDetailsImpl, Long> {
+    Optional<UserDetailsImpl> findByUsernameAndPassword(final String username, final String password);
+    Optional<UserDetailsImpl> findByUsername(final String username);
+}
